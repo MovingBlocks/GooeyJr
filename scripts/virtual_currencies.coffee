@@ -2,7 +2,7 @@
 #   See ethereum value
 
 module.exports = (robot) ->
-  robot.respond /gimme (.*).(.*)/i, (msg) ->
+  robot.respond /gimme (.*)%(.*)/i, (msg) ->
     v_currency = msg.match[1]
     r_currency = msg.match[2]
     msg.http("https://coinmarketcap-nexuist.rhcloud.com/api/#{v_currency}")
