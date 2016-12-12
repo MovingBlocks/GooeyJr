@@ -9,4 +9,5 @@ module.exports = (robot) ->
       .header('Content-Type', 'application/json')
       .get() (err, res, body) ->
         data = JSON.parse body
-        msg.send "#{data.price[r_currency]}"
+        prices = data.price
+        msg.send "#{prices[r_currency]}"
