@@ -1,5 +1,11 @@
+# Author:
+#   gkaretka
+
 # Description:
-#   See ethereum value
+#   See virtual currencies values
+
+# Usage:
+#   hubot convert <virtual-currency>%<real-currency>
 
 module.exports = (robot) ->
   robot.respond /convert (.*)%(.*)/i, (msg) ->
