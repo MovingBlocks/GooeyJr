@@ -6,4 +6,5 @@
 
 module.exports = (robot) ->
   robot.respond /(thanks|thx|thank you)/i, (msg) ->
-    msg.send("You're welcome")
+    sender = msg.message.user.name
+    msg.send("#{sender}: You're welcome")
