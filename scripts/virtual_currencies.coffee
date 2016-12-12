@@ -16,7 +16,7 @@ module.exports = (robot) ->
       .get() (err, res, body) ->
         data = JSON.parse body
         prices = data.price
-        if (price?)
+        if (prices?)
           msg.send "1#{v_currency} = #{prices[r_currency]}#{r_currency}"
         else
           msg.send "Wrong virtual/real currency."
