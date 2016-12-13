@@ -38,7 +38,7 @@ module.exports = (robot) ->
         data = JSON.parse body
         issue_index = Math.random() * (max - min) + min
         counter = 0
-        for obj in data:
+        for obj in data
           counter++
           if counter == issue_index
             msg.send "#{sender}: You can have a look at #{obj.title} here #{obj.html_url}"
