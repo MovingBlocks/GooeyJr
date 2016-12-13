@@ -36,7 +36,7 @@ module.exports = (robot) ->
       .header('Content-Type', 'application/json')
       .get() (err, res, body) ->
         data = JSON.parse body
-        issue_index = Math.random() * (max - min) + min
+        issue_index = Math.floor(Math.random() * (max - min) + min)
         counter = 0
         for obj in data
           counter++
