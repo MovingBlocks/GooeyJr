@@ -17,4 +17,8 @@ module.exports = (robot) ->
       .header('Content-Type', 'application/json')
       .get() (err, res, body) ->
         data = JSON.parse body
-        msg.send "#{Object.keys(data).length}"
+        issue_count = Object.keys(data).length
+        issue_translation = "issue"
+        if (issue_count > 1)
+          issue_translation = "#{issue_translation}s"
+        msg.send "#{sender}: There are #{issue_count} #{issue_translation}"
