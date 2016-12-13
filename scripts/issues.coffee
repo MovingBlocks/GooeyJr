@@ -37,5 +37,5 @@ module.exports = (robot) ->
       .get() (err, res, body) ->
         data = JSON.parse body
         issue_index = Math.random() * (max - min) + min
-        issue = data[issue_index]
+        issue = data.indexOf(issue_index)
         msg.send "#{sender}: You can have a look at #{issue.title} here #{issue.html_url}"
