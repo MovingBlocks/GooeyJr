@@ -16,7 +16,7 @@ module.exports = (robot) ->
       .header('Content-Type', 'application/json')
       .get() (err, res, body) ->
         data = JSON.parse body
-        for object in data:
+        for object in data
           title = object.title
           url = object.html_url
           msg.send "#{sender}: #{title}, #{url}"
