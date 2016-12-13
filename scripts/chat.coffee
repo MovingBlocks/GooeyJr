@@ -1,7 +1,7 @@
 module.exports = (robot) ->
   robot.hear /.*any.*(people|one).*here.*?/i, (msg) ->
     sender = msg.message.user.name
-    msg.send("#{sender}:Yeah, I am here... Although I am a bot")
+    msg.send("#{sender}: Yeah, I am here... Although I am a bot")
 
   robot.hear /.*Merry Christmas.*?/i, (msg) ->
     sender = msg.message.user.name
