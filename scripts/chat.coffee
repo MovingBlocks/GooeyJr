@@ -1,11 +1,11 @@
 module.exports = (robot) ->
-  robot.respond /.*any.*(people|one).*here.*?/i, (msg) ->
+  robot.hear /.*any.*(people|one).*here.*?/i, (msg) ->
     sender = msg.message.user.name
     msg.send("#{sender}:Yeah, I am here... Although I am a bot")
 
-  robot.respond /.*Merry Christmas.*?/i, (msg) ->
+  robot.hear /.*Merry Christmas.*?/i, (msg) ->
     sender = msg.message.user.name
-    msg.send("#{sender}:Merry Christmas to you, too!")
+    msg.send("#{sender}: Merry Christmas to you, too!")
 
 
   robot.respond /.*good.*morning.*/i, (msg) ->
