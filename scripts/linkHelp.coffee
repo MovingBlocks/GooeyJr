@@ -1,5 +1,5 @@
 module.exports = (robot) ->
-  #Gives the 
+
   robot.respond /(List of Modules)/i, (msg) ->
     sender = msg.message.user.name
     msg.send("#{sender}: https://github.com/MovingBlocks/Terasology/blob/develop/docs/Modules.md")
