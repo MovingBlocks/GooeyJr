@@ -13,11 +13,11 @@ module.exports = (robot) ->
     sender = msg.message.user.name
     user = msg.match[1]
     repo = msg.match[2]
-    msg.http("https://api.github.com/repos/#{user}/#{repo}/issues")
+    msg.http("https://api.github.com/repos/#{user}/#{repo}")
       .header('Content-Type', 'application/json')
       .get() (err, res, body) ->
         data = JSON.parse body
-        issue_count = Object.keys(data).length
+        issue_count = data.open_issues_count
         issue_translation = "issue"
         if (issue_count > 1)
           issue_translation = "#{issue_translation}s"
