@@ -42,4 +42,3 @@ module.exports = (robot) ->
           counter++
           if counter is issue_index
             msg.send "#{sender}: You can have a look at #{obj.title} here #{obj.html_url}"
-            break
