@@ -8,6 +8,7 @@
 #   hubot convert <user-name>@<repo-name>
 
 module.exports = (robot) ->
+  # look-up issues
   robot.respond /issues (.*)@(.*)/i, (msg) ->
     sender = msg.message.user.name
     user = msg.match[1]
@@ -16,7 +17,4 @@ module.exports = (robot) ->
       .header('Content-Type', 'application/json')
       .get() (err, res, body) ->
         data = JSON.parse body
-        for object in data
-          title = object.title
-          url = object.html_url
-          msg.send "#{sender}: #{title}, #{url}"
+        msg.send "#{Object.keys(data).length}"
