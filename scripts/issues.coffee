@@ -40,6 +40,6 @@ module.exports = (robot) ->
         counter = 0
         for obj in data
           counter++
-          if counter == issue_index
+          if counter is issue_index
             msg.send "#{sender}: You can have a look at #{obj.title} here #{obj.html_url}"
             break
