@@ -5,5 +5,5 @@ module.exports = (robot) ->
     robot.hear /^bargle$/i, (msg) ->
         msg.send("hargle bargle!")
 
-    robot.hear /^hargle bargle$/, (msg) ->
+    robot.hear /^hargle bargle$/i, (msg) ->
         msg.send("HARGLE BARGLE!!")
