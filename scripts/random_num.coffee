@@ -1,6 +1,6 @@
 module.exports = (robot) ->
     robot.respond /random$/i, (res) ->
-        res.reply("Random number between 0 and 1: ", Math.random())
+        res.reply("Random number between 0 and 1: #{Math.random()}")
 
     robot.respond /random between (\d+) and (\d+)/i, (res) ->
         if parseInt(res.match[1]) > parseInt(res.match[2])
