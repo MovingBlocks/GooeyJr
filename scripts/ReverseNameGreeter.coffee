@@ -13,9 +13,9 @@ module.exports = (robot) ->
         for i in [sender.length .. 0]
             SenderReverse += sender[i];    
 
-        res.send("#{sender}: Hello #{SenderReverse}. Sdrawkcab!")
+        res.send("/MSG #{sender} Hello #{SenderReverse}. Sdrawkcab!")
         Log = "Done!"
 
     robot.respond /.ShowLog*/i, (res) ->
         sender = res.message.user.name
-        res.send("#{sender}:#{Log}")
+        res.send("/MSG #{sender} #{Log}")
