@@ -1,24 +1,24 @@
 module.exports = (robot) ->
-	robot.respond /Module (.*)/i, (msg) ->
+	robot.respond /module (.*)/i, (msg) ->
 		sender = msg.message.user.name
 		module = msg.match[1]
 		msg.send("#{sender}: https://github.com/Terasology/#{module}")
-	robot.respond /StackOverflow (.*)/i, (msg) ->
+	robot.respond /stackoverflow (.*)/i, (msg) ->
 		sender = msg.message.user.name
 		search = msg.match[1]
 		search = search.split(" ").join("+")
 		msg.send("#{sender}: http://stackoverflow.com/search?q=#{search}")
-	robot.respond /Google (.*)/i, (msg) ->
+	robot.respond /google (.*)/i, (msg) ->
 		sender = msg.message.user.name
 		search = msg.match[1]
 		search = search.split(" ").join("+")
 		msg.send("#{sender}: https://www.google.com/#safe=strict&q=#{search}")
-	robot.respond /Youtube (.*)/i, (msg) ->
+	robot.respond /youtube (.*)/i, (msg) ->
 		sender = msg.message.user.name
 		search = msg.match[1]
 		search = search.split(" ").join("+")
 		msg.send("#{sender}: https://www.youtube.com/results?search_query=#{search}")
-	robot.respond /Wikipedia (.*)/i, (msg) ->
+	robot.respond /wikipedia (.*)/i, (msg) ->
 		sender = msg.message.user.name
 		search = msg.match[1]
 		search = search.split(" ").join("_")
