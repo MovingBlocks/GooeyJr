@@ -1,23 +1,22 @@
-# Author:
-#   gkaretka
-
 # Description:
-#   See virtual currencies values
-
-# Usage:
-#   hubot convert <virtual-currency>%<real-currency>
+#   A script that does conversion between cryptocurrencies and "real" currencies.
+#
+# Commands:
+#   hubot convert <cryptocurrency>%<fiat-currency> - converts a unit of cryptocurrency to a fiat currency.
+#
+# Author:
+#   gkaretka (https://github.com/gkaretka)
 
 module.exports = (robot) ->
   robot.respond /convert (.*)%(.*)/i, (msg) ->
-    v_currency = msg.match[1].toLowerCase()
-    r_currency = msg.match[2].toLowerCase()
-    sender = msg.message.user.name
-    msg.http("https://coinmarketcap-nexuist.rhcloud.com/api/#{v_currency}")
+    c_currency = msg.match[1].toLowerCase()
+    f_currency = msg.match[2].toLowerCase()
+    msg.http("https://coinmarketcap-nexuist.rhcloud.com/api/#{c_currency}")
       .header('Content-Type', 'application/json')
       .get() (err, res, body) ->
         data = JSON.parse body
         prices = data.price
         if (prices?)
-          msg.send "#{sender}: 1#{v_currency} = #{prices[r_currency]}#{r_currency}"
+          msg.reply "1#{c_currency} = #{prices[f_currency]}#{f_currency}"
         else
-          msg.send "#{sender}: Wrong virtual/real currency."
+          msg.reply "Wrong crypto/fiat currency."
