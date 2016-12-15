@@ -1,13 +1,10 @@
-# Author:
-#   Mandar Juvekar
-#
 # Description:
-#   Generate random numbers.
+#   Generates random numbers.
 #
 # Commands:
-#   hubot random
-#   hubot random between <bound1> and <bound2>
-#   hubot random <bound1> <bound2>
+#   hubot random - Generates a random number between 0 and 1.
+#   hubot random between <bound> and <bound> - Generates a random integer between the two bounds.
+#   hubot random <bound> <bound> - Generates a random integer between the two bounds.
 
 module.exports = (robot) ->
     robot.respond /random$/i, (res) ->
