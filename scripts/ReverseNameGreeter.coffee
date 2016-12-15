@@ -32,3 +32,19 @@ module.exports = (robot) ->
             res.send("#{Log}")
         else
             res.sendPrivate("#{Log}")
+
+    robot.respond /.Reverse (.*)*/i, (res) ->
+        sender = res.message.user.name
+        
+        TextReversed = ""        
+
+        for i in [res.match[1].length .. 0]
+            if res.match[1][i] != undefined
+                TextReversed += res.match[1][i];  
+
+        if res.sendPrivate == undefined
+            Log += " No private!"
+            
+            res.send("#{TextReversed}")
+        else
+            res.sendPrivate("#{TextReversed}")
