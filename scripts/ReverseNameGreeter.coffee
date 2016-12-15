@@ -3,7 +3,7 @@ module.exports = (robot) ->
 
     robot.enter (res) ->
         if res.message.user.name != "BenjaminAmos"
-            Log = "False"
+            Log = "False " + res.message.user.name + " has been seen."
             return
         
         sender = res.message.user.name    
