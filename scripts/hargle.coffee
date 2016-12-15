@@ -1,9 +1,9 @@
 module.exports = (robot) ->
-    robot.hear /^hargle(!)*$/i, (msg) ->
+    robot.respond /hargle(!)*$/i, (msg) ->
         msg.send("bargle!")
 
-    robot.hear /^bargle(!)*$/i, (msg) ->
+    robot.respond /bargle(!)*$/i, (msg) ->
         msg.send("hargle bargle!")
 
-    robot.hear /^hargle bargle(!)*$/i, (msg) ->
+    robot.respond /hargle bargle(!)*$/i, (msg) ->
         msg.send("HARGLE BARGLE!!")
