@@ -10,5 +10,6 @@
   "hubot-rules",
   "hubot-shipit",
   "hubot-tell",
-  "hubot-haiku"
+  "hubot-haiku",
+  "hubot-calculator"
 ]

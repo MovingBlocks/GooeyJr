@@ -6,6 +6,7 @@
   "description": "An IRC chatbot intended to help, and not take over the world...",
   "dependencies": {
     "hubot": "^2.19.0",
+    "hubot-calculator": ">= 0.3.0",
     "hubot-diagnostics": "0.0.1",
     "hubot-google-images": "^0.2.6",
     "hubot-google-translate": "^0.2.0",
