@@ -8,23 +8,16 @@
 #   None
 #
 # Commands:
-#   ShowLog - for showing a log to a predefined user.
 #   Reverse <text> - This will return the reverse of the text put in.
 #
 # Notes:
-#   This will only send a greeting to me for now as it would get rather annoying if it sent one to everyone
+#   
 #
 # Author:
 #   BenjaminAmos
-module.exports = (robot) ->
-    Log = "True"    
-    AuthoritiveUser = "BenjaminAmos"    
+module.exports = (robot) ->  
 
-    robot.enter (res) ->
-        if res.message.user.name != AuthoritiveUser
-            Log = "False " + res.message.user.name + " has been seen."
-            return
-        
+    robot.respond /.sdrawkcab*/i, (res) ->
         sender = res.message.user.name    
 
         SenderReverse = ""
@@ -34,16 +27,6 @@ module.exports = (robot) ->
                 SenderReverse += sender[i];  
         
         SendPrivateMessage(res, "Hello #{SenderReverse}. Sdrawkcab!")
-        
-        Log = "Done! Spoke to #{sender}."
-
-    robot.respond /.ShowLog*/i, (res) ->
-        sender = res.message.user.name
-        
-        if sender != AuthoritiveUser
-            SendPrivateMessage(res, "Sorry, this is only usable for debugging online by certain people.")
-        else
-            SendPrivateMessage(res, "#{Log}")
 
     robot.respond /.Reverse (.*)*/i, (res) ->
         sender = res.message.user.name
