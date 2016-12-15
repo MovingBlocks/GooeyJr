@@ -41,7 +41,6 @@ module.exports = (robot) ->
 
     SendPrivateMessage = (res, Message) ->
         if res.sendPrivate == undefined
-            Log += " No private!"
             res.send(Message)
         else
             res.sendPrivate(Message)
