@@ -37,4 +37,4 @@ module.exports = (robot) ->
         for obj in data
           counter++
           if counter is issue_index
-            msg.reply "What about #{obj.title}? Take a look at it here: #{obj.html_url}!"
+            msg.reply "What about #{obj.title}? Take a look at it here: #{obj.html_url} !"

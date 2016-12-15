@@ -6,7 +6,6 @@
 #   hubot stackoverflow <term> - searches Stackoverflow for the term!
 #   hubot google <term> - searches Google for the term!
 #   hubot youtube <term> - searches Youtube for the term!
-#   hubot wikipedia <term> - searches Wikipedia for the term!
 #
 # Author:
 #   TheJYKoder (https://github.com/TheJYKoder)
@@ -27,8 +26,3 @@ module.exports = (robot) ->
 		search = msg.match[1]
 		search = search.split(" ").join("+")
 		msg.reply("https://www.youtube.com/results?search_query=#{search}")
-	robot.respond /wikipedia (.*)/i, (msg) ->
-		search = msg.match[1]
-		search = search.split(" ").join("_")
-		msg.reply("https://en.wikipedia.org/wiki/#{search}")
-        

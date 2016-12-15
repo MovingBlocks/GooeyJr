@@ -1,14 +1,14 @@
 # Description:
-#   A script that does conversion between cryptocurrencies and "real" currencies.
+#   A script that does conversion between cryptocurrencies and fiat currencies.
 #
 # Commands:
-#   hubot convert <cryptocurrency>%<fiat-currency> - converts a unit of cryptocurrency to a fiat currency.
+#   hubot crypto <cryptocurrency>%<fiat-currency> - converts a unit of cryptocurrency to a fiat currency.
 #
 # Author:
 #   gkaretka (https://github.com/gkaretka)
 
 module.exports = (robot) ->
-  robot.respond /convert (.*)%(.*)/i, (msg) ->
+  robot.respond /crypto (.*)%(.*)/i, (msg) ->
     c_currency = msg.match[1].toLowerCase()
     f_currency = msg.match[2].toLowerCase()
     msg.http("https://coinmarketcap-nexuist.rhcloud.com/api/#{c_currency}")

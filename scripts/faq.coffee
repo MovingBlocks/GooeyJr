@@ -8,7 +8,7 @@
 
 module.exports = (robot) ->
   robot.hear /.*how (?:do I|to) run.*(?:the game)?.*from source.*/i, (msg) ->
-    msg.replt "Need help with running the game from source? Make sure you've followed the instructions in this guide: https://github.com/MovingBlocks/Terasology/wiki/Dev-Setup"
+    msg.reply "Need help with running the game from source? Make sure you've followed the instructions in this guide: https://github.com/MovingBlocks/Terasology/wiki/Dev-Setup"
 
   robot.hear /.*(?:where|how).*download.*terasology/i, (msg) ->
     msg.reply "Terasology can be downloaded on our Downloads page here: http://terasology.org/#download"
