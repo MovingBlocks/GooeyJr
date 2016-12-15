@@ -1,11 +1,20 @@
-# Author:
-#   gkaretka
-
 # Description:
-#   Just give some random cat images
-
-# Usage:
-#   hubot meow
+#   Gives the user some random cat images!
+#
+# Dependencies:
+#   None
+#
+# Configuration:
+#   None
+#
+# Commands:
+#   hubot meow - respond with a random cat image
+#
+# Notes:
+#   None
+#
+# Author:
+#   gkaretka (https://github.com/gkaretka)
 
 module.exports = (robot) ->
   robot.respond /meow/i, (msg) ->
