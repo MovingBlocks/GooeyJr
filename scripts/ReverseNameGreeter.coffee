@@ -8,21 +8,25 @@ module.exports = (robot) ->
         
         sender = res.message.user.name    
 
-        SenderReverse = " "
+        SenderReverse = ""
 
         for i in [sender.length .. 0]
-            SenderReverse += sender[i];    
+            if sender[i] != undefined
+                SenderReverse += sender[i];  
 
         if res.sendPrivate == undefined
-            res.send("Hello#{SenderReverse}. Sdrawkcab!")
+            res.send("Hello #{SenderReverse}. Sdrawkcab!")
         else
-            res.sendPrivate("Hello#{SenderReverse}. Sdrawkcab!")
+            res.sendPrivate("Hello #{SenderReverse}. Sdrawkcab!")
         
-        Log = "Done!"
+        Log = "Done! Spoke to #{sender}."
 
     robot.respond /.ShowLog*/i, (res) ->
         sender = res.message.user.name
         
+        if sender != "BenjaminAmos"
+            res.sendPrivate("Sorry, this is only usable for debugging.")
+
         if res.sendPrivate == undefined
             Log += " No private!"
             res.send("#{Log}")
