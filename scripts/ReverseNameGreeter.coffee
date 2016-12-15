@@ -18,9 +18,10 @@
 #   BenjaminAmos
 module.exports = (robot) ->
     Log = "True"    
+    AuthoritiveUser = "BenjaminAmos"    
 
     robot.enter (res) ->
-        if res.message.user.name != "BenjaminAmos"
+        if res.message.user.name != AuthoritiveUser
             Log = "False " + res.message.user.name + " has been seen."
             return
         
@@ -39,7 +40,7 @@ module.exports = (robot) ->
     robot.respond /.ShowLog*/i, (res) ->
         sender = res.message.user.name
         
-        if sender != "BenjaminAmos"
+        if sender != AuthoritiveUser
             SendPrivateMessage(res, "Sorry, this is only usable for debugging online by certain people.")
         else
             SendPrivateMessage(res, "#{Log}")
