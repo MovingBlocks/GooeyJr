@@ -1,5 +1,5 @@
 module.exports = (robot) ->
-	robot.respond /GitHub (.*)/i, (msg) ->
+	robot.respond /Module (.*)/i, (msg) ->
 		sender = msg.message.user.name
 		module = msg.match[1]
 		msg.send("#{sender}: https://github.com/Terasology/#{module}")
