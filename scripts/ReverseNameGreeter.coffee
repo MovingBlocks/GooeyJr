@@ -8,15 +8,15 @@ module.exports = (robot) ->
         
         sender = res.message.user.name    
 
-        SenderReverse = ""
+        SenderReverse = " "
 
         for i in [sender.length .. 0]
             SenderReverse += sender[i];    
 
         if res.sendPrivate == undefined
-            res.send("Hello #{SenderReverse}. Sdrawkcab!")
+            res.send("Hello#{SenderReverse}. Sdrawkcab!")
         else
-            res.sendPrivate("Hello #{SenderReverse}. Sdrawkcab!")
+            res.sendPrivate("Hello#{SenderReverse}. Sdrawkcab!")
         
         Log = "Done!"
 
