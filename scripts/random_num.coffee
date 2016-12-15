@@ -1,10 +1,16 @@
 # Description:
 #   Generates random numbers.
 #
+# Configuration:
+#   None
+#
 # Commands:
-#   hubot random - Generates a random number between 0 and 1.
-#   hubot random between <bound> and <bound> - Generates a random integer between the two bounds.
-#   hubot random <bound> <bound> - Generates a random integer between the two bounds.
+#   hubot random - Generate a random number between 0 and 1.
+#   hubot random between <bound> in <bound> - Generate random integer between the two bounds.
+#   hubot random <bound> <bound> - Generate random integer between the two bounds.
+#
+# Author:
+#   Mandar Juvekar
 
 module.exports = (robot) ->
     robot.respond /random$/i, (res) ->
