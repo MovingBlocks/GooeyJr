@@ -17,7 +17,7 @@
 #   BenjaminAmos
 module.exports = (robot) ->  
 
-    robot.respond /.sdrawkcab*/i, (res) ->
+    robot.hear /.sdrawkcab*/i, (res) ->
         sender = res.message.user.name    
 
         SenderReverse = ""
@@ -26,9 +26,9 @@ module.exports = (robot) ->
             if sender[i] != undefined
                 SenderReverse += sender[i];  
         
-        SendPrivateMessage(res, "Hello #{SenderReverse}. Sdrawkcab!")
+        res.send(Message)(res, "Hello #{SenderReverse}. Sdrawkcab!")
 
-    robot.respond /.Reverse (.*)*/i, (res) ->
+    robot.hear /.Reverse (.*)*/i, (res) ->
         sender = res.message.user.name
         
         TextReversed = ""        
@@ -37,10 +37,4 @@ module.exports = (robot) ->
             if res.match[1][i] != undefined
                 TextReversed += res.match[1][i];  
 
-        SendPrivateMessage(res, "#{TextReversed}")
-
-    SendPrivateMessage = (res, Message) ->
-        if res.sendPrivate == undefined
-            res.send(Message)
-        else
-            res.sendPrivate(Message)
+        res.send(Message)(res, "#{TextReversed}")
