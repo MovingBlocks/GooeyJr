@@ -6,9 +6,13 @@ html
     div
       table(class='table table-hover')
         thead
-          tr: th Commands
+          tr
+            th Commands
+            th Description
         tbody
           each cmd in commands
             tr
               td
-                p= cmd
+                p= #{cmd.split("-")[0]}
+              td
+                p= #{cmd.split("-")[1]}
