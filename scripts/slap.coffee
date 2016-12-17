@@ -4,6 +4,6 @@
 
 module.exports = (robot) ->
   
-  robot.hear /.slap (.*)/i, (res) ->
+  robot.respond /.slap (.*)/i, (res) ->
 	name = res.match[1]
 	res.emote("slaps #{name} around a bit with a large trout")
