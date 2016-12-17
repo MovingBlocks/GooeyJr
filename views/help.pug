@@ -1,5 +1,16 @@
-title #{title}
+html
+  head
+    title #{title}
+    style
+      include https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css
 
-ul
-  each cmd in commands
-    li= cmd
+  body
+    div
+      table(class=table table-hover)
+        thead
+          tr: th Posts
+        tbody
+          each cmd, i in commands
+            tr
+              td
+                cmd
