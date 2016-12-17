@@ -2,7 +2,7 @@
 #   A script that does conversion between cryptocurrencies and fiat currencies.
 #
 # Commands:
-#   hubot crypto <cryptocurrency>%<fiat-currency> - converts a unit of cryptocurrency to a fiat currency.
+#   hubot crypto <cryptocurrency>%<fiat_currency> - converts a unit of cryptocurrency to a fiat currency.
 #
 # Author:
 #   gkaretka (https://github.com/gkaretka)

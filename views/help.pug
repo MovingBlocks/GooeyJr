@@ -1,0 +1,19 @@
+html
+  head
+    title #{title}
+    link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css", integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7", crossorigin="anonymous")
+  body
+    div(class='container')
+      div
+        table(class='table table-striped')
+          thead
+            tr
+              th Commands
+              th Description
+          tbody
+            each cmd in commands
+              tr
+                td
+                  p #{cmd.split("-")[0]}
+                td
+                  p #{cmd.split("-")[1]}

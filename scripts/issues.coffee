@@ -2,8 +2,8 @@
 #   Commands related to issues in (public) GitHub repos.
 #
 # Commands:
-#   hubot issues count <user-name>@<repo-name> - get the amount of issues in a GitHub repo.
-#   hubot issues give <user-name>@<repo-name> - get a random issue from a GitHub repo.
+#   hubot issues count <user_name>@<repo_name> - get the amount of issues in a GitHub repo.
+#   hubot issues give <user_name>@<repo_name> - get a random issue from a GitHub repo.
 #
 # Author:
 #   gkaretka (https://github.com/gkaretka)
