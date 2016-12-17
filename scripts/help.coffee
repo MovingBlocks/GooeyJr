@@ -1,3 +1,12 @@
+# Description:
+#   Script that shows help url
+#
+# Commands:
+#   hubot help
+#
+# Author:
+#   gkaretka (https://github.com/gkaretka)
+
 module.exports = (robot) ->
   robot.respond /help\s*(.*)?$/i, (msg) ->
     #TODO CHANGE AFTER FINAL DEPLOYMENT TO TERASOLOGY LINK
