@@ -11,7 +11,7 @@
 
 module.exports = (robot) ->
   # for testing, list of users that the bot will send the greeting to
-  reply_to = ["iojw", "rzats", "Cervator"]
+  reply_to = ["iojw", "rzats", "Cervator", "Guest1234"]
   # list of users who have opted out of receiving the message
   opt_out = JSON.parse(robot.brain.get 'greeting') or []
   # IRC nickname of the bot
@@ -19,13 +19,13 @@ module.exports = (robot) ->
   # regexp for Guest nicknames
   guest_nick = /^Guest\d*$/
   # greeting message sent to users
-  greeting = "Hello! Welcome to #terasology!\n" +
+  greeting_msg = "Hello! Welcome to #terasology!\n" +
              "Do take note that this IRC channel is being logged.\n" + 
              "While we will try our best to respond to your messages as soon as possible, please be patient " +
              "and understand that not every online user will be watching the chat all the time.\n" +
              "If you would like to learn more about Terasology, be sure to check out our forums at http://forum.terasology.org " +
-             "and our Github repo at http://github.com/MovingBlocks/Terasology! \n" +
-             "Reply 'Understood' if you do not want to receive this greeting again."
+             "and our Github repo at http://github.com/MovingBlocks/Terasology!"
+  understood_msg = "Reply 'Understood' if you do not want to receive this greeting again."
 
   robot.respond /understood.*/i, (msg) ->
     username = msg.message.user.name
@@ -56,4 +56,6 @@ module.exports = (robot) ->
   robot.enter (msg) ->
     username =  msg.message.user.name
     if username not in opt_out and username isnt bot_nick and username in reply_to
-      msg.sendPrivate greeting
+      msg.sendPrivate greeting_msg
+      if not guest_nick.test(username)
+        msg.sendPrivate understood_msg
