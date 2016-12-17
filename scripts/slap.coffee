@@ -6,12 +6,9 @@
 
 module.exports = (robot) ->
   
-  robot.hear /slap (.*)/i, (msg) ->
-	name = msg.match[1]
-    msg.reply("#{name}")
-   
-  robot.hear /What is love?/i, (msg) ->
-    msg.reply("Baby don't hurt me, don't hurt me, no more!")
-
-  robot.hear /Luke, I am your father/i, (msg) ->
-    msg.reply("Actually, the CORRECT quote is \"No, I am your father\"!")
+  robot.respond /open the (.*) doors/i, (res) ->
+    doorType = res.match[1]
+    if doorType is "pod bay"
+      res.reply "I'm afraid I can't let you do that."
+    else
+	  res.reply "Opening #{doorType} doors"
