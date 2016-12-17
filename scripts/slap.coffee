@@ -1,12 +1,11 @@
 # Description:
-#   Commands related to issues in (public) GitHub repos.
+#   For when you just need that trout to impact someone's face
 #
 # Commands:
-#   hubot issues count <user-name>@<repo-name> - get the amount of issues in a GitHub repo.
-#   hubot issues give <user-name>@<repo-name> - get a random issue from a GitHub repo.
+#   .slap person
 #
 # Author:
-#   gkaretka (https://github.com/gkaretka)
+#   jellysnake (http://github.com/jellysnake)
 
 max = 30
 min = 0
