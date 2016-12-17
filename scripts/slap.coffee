@@ -12,18 +12,9 @@ max = 30
 min = 0
 
 module.exports = (robot) ->
-  robot.respond /issues count (.*)@(.*)/i, (msg) ->
+  robot.respond /slap(.*)/i, (msg) ->
     user = msg.match[1]
-    repo = msg.match[2]
-    msg.http("https://api.github.com/repos/#{user}/#{repo}")
-      .header('Content-Type', 'application/json')
-      .get() (err, res, body) ->
-        data = JSON.parse body
-        issue_count = data.open_issues_count
-        issue_translation = "issue"
-        if (issue_count > 1)
-          issue_translation = "#{issue_translation}s"
-        msg.reply "There are #{issue_count} #{issue_translation}"
+    msg.reply "There are #{user}"
 
   robot.respond /issues give (.*)@(.*)/i, (msg) ->
     user = msg.match[1]
