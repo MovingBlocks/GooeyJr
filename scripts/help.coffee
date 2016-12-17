@@ -2,7 +2,7 @@
 #   Script that shows help url
 #
 # Commands:
-#   hubot help
+#   hubot help - shows help url
 #
 # Author:
 #   gkaretka (https://github.com/gkaretka)
