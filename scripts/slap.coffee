@@ -1,8 +1,16 @@
-# For when you just /really/ itch to give someone a good trouting
+# Description:
+#   Just a bunch of silly references. You can tell from the title :)
 #
-# by jellysnake
+# Author:
+#   SufurElite (https://github.com/SufurElite)
 
 module.exports = (robot) ->
-  robot.respond /.slap (.*)/i, (msg) ->
-	#name = msg.match[1]
-	msg.emote("slaps #{name} around a bit with a large trout")
+  
+  robot.hear /You're a wizard, Harry/i, (msg) ->
+    msg.reply("What's a wizard?....And who's Harry?")
+   
+  robot.hear /What is love?/i, (msg) ->
+    msg.reply("Baby don't hurt me, don't hurt me, no more!")
+
+  robot.hear /Luke, I am your father/i, (msg) ->
+    msg.reply("Actually, the CORRECT quote is \"No, I am your father\"!")
