@@ -12,6 +12,6 @@ max = 30
 min = 0
 
 module.exports = (robot) ->
-  robot.respond /slap (.*)/i, (msg) ->
+  robot.hear /\.slap (.*)/i, (msg) ->
     user = msg.match[1]
     msg.emote "slaps #{user} around a bit with a large trout"
