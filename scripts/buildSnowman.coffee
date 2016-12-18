@@ -7,25 +7,24 @@
 #
 # Author:
 #   VaibhavBajaj (https://github.com/VaibhavBajaj)
-snowmanText =  ["    ||::|:||   .--------,",
-                "    |:||:|:|   |_______ /        .-.",
-                "    ||::|:|| .\"`  ___  `\".    {\('v')/}",
-                "    \\\/\///:  .'`   `'.  ;____`(   )'____",
-                "     \====/ './  o   o  \|~     ^\" \"^   //",
-                "      \\//   |   ())) .  |   Season's    \\",
-                "       ||     \ `.__.'  /|   Greetings  //",
-                "       ||   _{``-.___.-'\|  from: Gooey  \\",
-                "       || _.\" `-.____.-'`|    ___       //",
-                "       ||`        __ \   |___/   \_______\\",
-                "     .\"||        (__) \    \|     /",
-                "    /   `\/       __   vvvvv'\___/",
-                "    |     |      (__)        |",
-                "     \___/\                 /",
-                "       ||  |     .___.     |",
-                "       ||  |       |       |",
-                "       ||.-'       |       '-.",
-                "   jgs ||          |          )",
-                "       ||----------'---------'"]
+snowmanText =  ["           ___",
+                "         _[___]_  _",
+                "          ( \" )  [_]",
+                "      '--(`~:~`)--|'",
+                "        / `-:-' \ |",
+                "     .--\   :   /--.",
+                "_..-'    '-----'    '-.._"]
+
+
+
+
+
+
+
+
+
+
+
 
 module.exports = (robot) ->
    robot.respond /(.*)(christmas|snow|snowman|winter)(.*)/i, (msg) ->
@@ -33,5 +32,5 @@ module.exports = (robot) ->
       setTimeout ->
          msg.send "Oh, I'm all excited now. Don't type anything for a few seconds please."
       ,3000
-      for i in [0..18]
+      for i in [0..7]
             msg.send snowmanText[i]
