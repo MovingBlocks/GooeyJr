@@ -23,11 +23,11 @@ jokeAnswerList = [";",
 
 module.exports = (robot) ->
    robot.respond /(.*)joke(.*)/i, (msg) ->
-      randNum = Math.random() * 5
       msg.send "Joke? Joke! I know a JOKE!"
+      randNum = int(Math.random() * 5)
       jokeMes = jokeList[randNum]
       msg.send jokeMes
       jokeAnswerMes = jokeAnswerList[randNum]
       setTimeout ->
          msg.send jokeAnswerMes
-      ,5000
+      ,4000
