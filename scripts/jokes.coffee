@@ -23,7 +23,7 @@ jokeAnswerList = [";",
 
 module.exports = (robot) ->
    robot.respond /(.*)joke(.*)/i, (msg) ->
-      randNum = Math.random() * 3
+      randNum = Math.random() * 5
       msg.send "Joke? Joke! I know a JOKE!"
       jokeMes = jokeList[randNum]
       msg.send jokeMes
