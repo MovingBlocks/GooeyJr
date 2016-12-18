@@ -2,7 +2,7 @@
 #   Tells the user a joke.
 #
 # Commands:
-#   "nameOfBot: joke" followed by anything
+#   "nameOfBot:" followed by "joke" in a sentence
 #   Example -> GooeyJrVaibhav: Joke, please.
 #
 # Author:
@@ -24,7 +24,7 @@ jokeAnswerList = [";",
 module.exports = (robot) ->
    robot.respond /(.*)joke(.*)/i, (msg) ->
       msg.send "Joke? Joke! I know a JOKE!"
-      randNum = int(Math.random() * 5)
+      randNum = Math.round(Math.random() * 5)
       jokeMes = jokeList[randNum]
       msg.send jokeMes
       jokeAnswerMes = jokeAnswerList[randNum]
