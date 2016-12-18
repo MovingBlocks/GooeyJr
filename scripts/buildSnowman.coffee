@@ -33,7 +33,5 @@ module.exports = (robot) ->
       setTimeout ->
          msg.send "Oh, I'm all excited now. Don't type anything for a few seconds please."
       ,3000
-      for i in [0...18]
-         setTimeout ->
-           msg.send i
-         ,300
+      for i of [0..18]
+         msg.send i
