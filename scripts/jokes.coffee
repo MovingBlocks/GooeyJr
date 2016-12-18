@@ -18,6 +18,6 @@ module.exports = (robot) ->
       jokeMes = jokeList[randNum]
       msg.send jokeMes
       jokeAnswerMes = jokeAnswerList[randNum]
-      setTimeout () ->
+      setTimeout() ->
       msg.send jokeAnswerMes
       , 1000
