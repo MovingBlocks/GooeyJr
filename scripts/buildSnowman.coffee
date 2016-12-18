@@ -30,10 +30,10 @@ snowmanText =  ["    ||::|:||   .--------,",
 module.exports = (robot) ->
    robot.respond /(christmas|snow|snowman|winter)/i, (msg) ->
       msg.send "I do really love Winter, especially Christmas! I get to build a snowman. Wanna see how?!"
-      setTimeout () ->
+      setTimeout ->
          msg.send "Oh, I'm all excited now. Don't type anything for a few seconds please."
       ,3000
-      for line in snowmanText:
-         setTimeout () ->
+      for line of snowmanText:
+         setTimeout ->
            msg.send line
          ,1000
