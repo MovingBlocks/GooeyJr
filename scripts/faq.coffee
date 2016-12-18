@@ -24,6 +24,9 @@ module.exports = (robot) ->
     
   robot.respond /(wiki)/i, (msg) ->
     msg.reply("Our wiki is located at https://github.com/MovingBlocks/Terasology/wiki.")
+  
+  robot.respond /(tutorial)/i, (msg) ->
+    msg.reply("Here's one https://www.youtube.com/watch?v=6RffFhBysKU")
     
   robot.respond /(github)/i, (msg) ->
     msg.reply("Our main repo is located at https://github.com/MovingBlocks/Terasology.")
