@@ -1,14 +1,15 @@
 # Description:
-#   Allows interaction with github
+#   Adds github integration.
 #
 # Dependencies:
 #   "githubot": "0.4.0"
 #
 # Configuration:
-#   None - use githubot
+#  HUBOT_GITHUB_TOKRN - Authorization token for github.
 #
 # Commands:
 #   hubot create repo <repo name> - Creates a repo in MovingBlocks with the given name
+#   hubot add <user> to team <team name> - Adds a user to a github team.
 #
 # Author:
 #   simplyianm
