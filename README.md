@@ -19,8 +19,8 @@ So now:
 
 * Navigate to the GooeyJr repository that you have just cloned
 * Login to Heroku: `heroku login` - you should be prompted for your account info
-* Create a Heroku application: `heroku create <name> --stack cedar` where `name` is all lower case letters, numbers, or dashes
-* Connect the remote Heroku application to your local Git repository: `heroku git:remote -a <name>` where again `name` matches what you named your app on Heroku
+* Create a Heroku application: `heroku create [name] --stack cedar` replace `[name]` with the app's name in all lower case letters, numbers, or dashes
+* Connect the remote Heroku application to your local Git repository: `heroku git:remote -a [name]` where again `[name]` matches what you named your app on Heroku
 * Push this to heroku by entering `git push heroku master`
 
 Once you've done this, you can now configure the bot by first giving it a nickname that will be displayed on IRC:
