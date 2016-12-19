@@ -19,21 +19,22 @@ module.exports = (robot) ->
 
   robot.respond /create repo (["'\w: -_]+)/i, (msg) ->
     unless robot.auth.hasRole msg.envelope.user, 'github'
-      msg.send "Why should I listen to you, #{msg.message.user.name}?"
+      msg.send "Sorry #{msg.message.user.name} but you don't have the right role to request that."
       return
 
     data =
       name: msg.match[1].trim()
 
-    github.post 'orgs/GooeyTests/repos', data, (repo) ->
+    # TODO: Move away from hard coded org name
+    github.post 'orgs/Nanoware/repos', data, (repo) ->
       msg.send "Repo #{repo.name} created at #{repo.html_url}"
 
   robot.respond /add (["'\w: -_]+) to team (["'\w: -_]+)/i, (msg) ->
     unless robot.auth.hasRole msg.envelope.user, 'github'
-      msg.send "Why should I listen to you, #{msg.message.user.name}?"
+      msg.send "Sorry #{msg.message.user.name} but you don't have the right role to request that."
       return
 
-    github.get 'orgs/GooeyTests/teams', (teams) ->
+    github.get 'orgs/Nanoware/teams', (teams) ->
       ourTeam = null
       for team in teams
         if team.name.toLowerCase() is msg.match[2]
