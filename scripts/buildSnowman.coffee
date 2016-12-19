@@ -7,6 +7,7 @@
 #
 # Author:
 #   VaibhavBajaj (https://github.com/VaibhavBajaj)
+
 snowmanText =  ["           ___",
                 "         _[___]_  _",
                 "          ( \" )  [_]",
@@ -22,4 +23,4 @@ module.exports = (robot) ->
       setTimeout ->
          for i in [0..7]
             msg.send snowmanText[i]
-      ,10 * 1000
+      ,6 * 1000
