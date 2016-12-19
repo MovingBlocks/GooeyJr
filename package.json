@@ -5,6 +5,7 @@
   "author": "MovingBlocks",
   "description": "An IRC chatbot intended to help, and not take over the world...",
   "dependencies": {
+    "githubot": "^1.0.1",
     "hubot": "^2.19.0",
     "hubot-calculator": ">= 0.3.0",
     "hubot-diagnostics": "0.0.1",
