@@ -6,6 +6,7 @@
 #
 # Configuration:
 #  HUBOT_GITHUB_TOKRN - Authorization token for github.
+#   See https://github.com/iangreenleaf/githubot for details
 #
 # Commands:
 #   hubot create repo <repo name> - Creates a repo in MovingBlocks with the given name
