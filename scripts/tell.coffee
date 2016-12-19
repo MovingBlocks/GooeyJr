@@ -2,11 +2,11 @@
 #   Tell Hubot to send a user a message when present in the room
 #
 # Dependencies:
-#   timeago (if HUBOT_TELL_RELATIVE_TIME is set)
+#   moment (unless HUBOT_TELL_ABSOLUTE_TIME is set to true)
 #
 # Configuration:
 #   HUBOT_TELL_ALIASES [optional] - Comma-separated string of command aliases for "tell".
-#   HUBOT_TELL_RELATIVE_TIME [boolean] - Set to use relative time strings ("2 hours ago")
+#   HUBOT_TELL_ABSOLUTE_TIME [boolean] - Set to use absolute time strings
 #
 # Commands:
 #   hubot tell <recipients> <some message> - tell <recipients> <some message> next time they are present.
@@ -26,10 +26,10 @@ config =
     process.env.HUBOT_TELL_ALIASES.split(',').filter((x) -> x?.length)
   else
     []
-  relativeTime: process.env.HUBOT_TELL_RELATIVE_TIME?
+  absoluteTime: process.env.HUBOT_TELL_ABSOLUTE_TIME?
 
-if config.relativeTime
-  timeago = require('timeago')
+if not config.absoluteTime
+  moment = require('moment')
 
 check_messages = (robot, room, username) ->
   localstorage = JSON.parse(robot.brain.get 'hubot-tell') or {}
@@ -44,8 +44,8 @@ check_messages = (robot, room, username) ->
         tellmessage = "#{username}: "
         for message in localstorage[room][recipient]
           # Also check that we have successfully loaded timeago
-          if config.relativeTime && timeago?
-            timestr = jQuery.timeago(message[1])
+          if not config.absoluteTime && moment?
+            timestr = moment(new Date(message[1])).fromNow()
           else
             timestr = "at #{message[1].toLocaleString()}"
           tellmessage += "#{message[0]} said #{timestr}: #{message[2]}\r\n"
@@ -88,10 +88,10 @@ module.exports = (robot) ->
     return
 
   robot.hear /.+/i, (msg) ->
-    speaker = msg.message.user.name
+    username = msg.message.user.name
     room = msg.message.user.reply_to || msg.message.user.room
 
-    for tellmessage in check_messages(robot, room, speaker)
+    for tellmessage in check_messages(robot, room, username)
       msg.send tellmessage
 
   # When a user enters, check if someone left them a message
@@ -99,5 +99,5 @@ module.exports = (robot) ->
     username = msg.message.user.name
     room = msg.message.user.room
 
-    for tellmessage in check_messages(localstorage, room, speaker)
+    for tellmessage in check_messages(robot, room, username)
       msg.send tellmessage
