@@ -13,6 +13,3 @@ insultGen = [["n Artless", "Bawdy", "Beslubbering", "Bootless", "Churlish", "Coc
 module.exports = (robot) ->
   robot.respond /insult me/i, (msg) ->
     msg.reply("Thou art a" + insultGen[0][Math.round(Math.random() * 50)] + " " + insultGen[1][Math.round(Math.random() * 50)] + " " + insultGen[2][Math.round(Math.random() * 50)] + "!" )
-
-  robot.respond /insult/i, (msg) ->
-    msg.send("Thou art a" + insultGen[0][Math.round(Math.random() * 50)] + " " + insultGen[1][Math.round(Math.random() * 50)] + " " + insultGen[2][Math.round(Math.random() * 50)] + "!")
