@@ -15,4 +15,5 @@ module.exports = (robot) ->
         if err
           msg.reply "Encountered an error :( #{err}"
           return
-        msg.reply "no error #{body}"
+        data = JSON.parse body
+        msg.reply "#{data.count}, #{data.results[10].completed_task_instance_count}"
