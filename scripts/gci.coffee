@@ -9,11 +9,16 @@
 
 module.exports = (robot) ->
   robot.respond /gci/i, (msg) ->
-    msg.reply "Hold on"
     robot.http("https://codein.withgoogle.com/api/program/2016/organization/")
       .get() (err, res, body) ->
         if err
           msg.reply "Encountered an error :( #{err}"
           return
         data = JSON.parse body
-        msg.reply "#{data.count}, #{data.results[10].completed_task_instance_count}"
+        arry = []
+        for org in data.results
+          i = 0
+          arry.push([data.results[i].completed_task_instance_count, data.results[i].name])
+          i++
+          msg.reply "#{i}"
+        msg.reply "#{arry}"
