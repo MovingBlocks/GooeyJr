@@ -16,9 +16,7 @@ module.exports = (robot) ->
           return
         data = JSON.parse body
         arry = []
-        for org in data.results
-          i = 0
+        for (var i = 0; i < data.results.length; i++)
           arry.push([data.results[i].completed_task_instance_count, data.results[i].name])
-          i = i + 1
           msg.reply "#{i}"
         msg.reply "#{arry}"
