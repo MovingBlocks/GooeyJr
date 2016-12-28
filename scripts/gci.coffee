@@ -10,7 +10,6 @@
 module.exports = (robot) ->
   robot.respond /gci /i, (msg) ->
     robot.http("https://codein.withgoogle.com/api/program/2016/organization/")
-      .header('Accept', 'application/json')
       .get() (err, res, body) ->
         if err
           msg.reply "Encountered an error :( #{err}"
