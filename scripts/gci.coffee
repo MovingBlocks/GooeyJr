@@ -15,7 +15,10 @@ module.exports = (robot) ->
           msg.reply "Encountered an error :( #{err}"
           return
         data = JSON.parse body
-        arry = []
-        for i in [0...data.results.length]
-          arry.push([data.results[i].completed_task_instance_count, data.results[i].name])
-        msg.reply "#{arry}"
+        orgs = data.results
+        orgs.sort (a,b) ->
+          return if a.completed_task_instance_count <= b.completed_task_instance_count then 1 else -1
+        response = "GCI Statistics: \n"
+        for i in [0...orgs.length]
+          response += "#{orgs[i].name}: #{orgs[i].completed_task_instance_count} \n"
+        msg.reply "#{response}"
