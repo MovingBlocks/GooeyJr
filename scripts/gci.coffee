@@ -10,10 +10,10 @@
 module.exports = (robot) ->
   robot.respond /gci/i, (msg) ->
     robot.http("https://codein.withgoogle.com/api/program/2016/organization/")
-	  .get() (err, res, body) ->
+      .get() (err, res, body) ->
         if err
           msg.reply "Encountered an error :( #{err}"
           return
 
-	    data = JSON.parse body
-		msg.reply "#{data.count}, #{data.results[10].completed_task_instance_count}"
+        data = JSON.parse body
+msg.reply "#{data.count}, #{data.results[10].completed_task_instance_count}"
