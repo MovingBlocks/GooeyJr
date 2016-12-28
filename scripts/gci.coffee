@@ -19,6 +19,6 @@ module.exports = (robot) ->
         for org in data.results
           i = 0
           arry.push([data.results[i].completed_task_instance_count, data.results[i].name])
-          i++
+          i = i + 1
           msg.reply "#{i}"
         msg.reply "#{arry}"
