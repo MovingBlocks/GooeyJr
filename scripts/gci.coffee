@@ -18,5 +18,4 @@ module.exports = (robot) ->
         arry = []
         for i in [0...data.results.length]
           arry.push([data.results[i].completed_task_instance_count, data.results[i].name])
-          msg.reply "#{i}"
         msg.reply "#{arry}"
