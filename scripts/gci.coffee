@@ -17,4 +17,4 @@ module.exports = (robot) ->
           return
 
         data = JSON.parse body
-        msg.reply "#{data.count}, #{data.results[10].completed_task_instance_count"
+        msg.reply "#{data.count}, #{data.results[10].completed_task_instance_count}"
