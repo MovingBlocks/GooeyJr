@@ -1,11 +1,11 @@
 # Description:
-#   Find out the timezone of a location!
+#   Displays live GCI Statistics sorted with completed tasks!
 #
 # Commands:
-#   hubot timezone <location> - Returns the timezone of a location.
+#   hubot gci - Returns the GCI Statistics.
 #
 # Author:
-#   smsunarto (https://github.com/smsunarto)
+#   nihal111 (https://github.com/nihal111)
 
 module.exports = (robot) ->
   robot.respond /gci/i, (msg) ->
