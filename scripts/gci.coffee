@@ -18,7 +18,7 @@ module.exports = (robot) ->
         robot.logger.info body
         data = null
 	    try
-	      data = JSON.parse req.body.payload
+	      data = JSON.parse body
 	      msg.reply "#{data.count}, #{data.results[10].completed_task_instance_count}"
 	    catch err
 	      robot.emit 'error', err
