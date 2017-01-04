@@ -4,10 +4,16 @@
 # Commands:
 #   hubot issues count <user_name>@<repo_name> - get the amount of issues in a GitHub repo.
 #   hubot issues give <user_name>@<repo_name> - get a random issue from a GitHub repo.
-#   iss(ue)#<user_name>/<repo_name>/<issue_number> - displays link, title and state of issue
-#                                                  - omitting user_name defaults to Terasology as user
-#                                                  - omitting both user_name and repo_name defaults to MovingBlocks/Terasology repo
 #
+#   issue#<user_name>/<repo_name>/<issue_number> 
+#     - displays link, title and state of issue
+#     - omitting user_name defaults to Terasology as user
+#     - omitting both user_name and repo_name defaults to MovingBlocks/Terasology repo
+#     
+#     - e.g. "Issue #1" is MovingBlocks/Terasology's #1 issue
+#            "Issue #Cooking/1" is Terasology/Cooking's #1 issue (as I think we talk more about modules, which are under the Terasology user)
+#            "Issue #MovingBlocks/GooeyJr/1" is MovingBlocks/GooeyJr's #1 issue (if we need to get an issue from a specific repo)
+#     - Also, you can shorten Issue to Iss. 
 # Author:
 #   gkaretka (https://github.com/gkaretka)
 #   andriii25 (https://github.com/andriii25)
@@ -44,16 +50,16 @@ module.exports = (robot) ->
           if counter is issue_index
             msg.reply "What about #{obj.title}? Take a look at it here: #{obj.html_url} !"
 
-  robot.hear /Iss(ue)?#(((\w+)\/)?(\w+)\/)?(\d+)/i, (msg) ->
-    issueNo = msg.match[6]
+  robot.hear /Iss(?:ue)?(?: )?#(?:(?:(\w+)\/)?(\w+)\/)?(\d+)/i, (msg) ->
+    issueNo = msg.match[3]
     repositoryFullName = ""
     organizaton = "MovingBlocks"
     repository = "Terasology"
-    if (msg.match[5]?)
-      repository = msg.match[5]
+    if (msg.match[2]?)
+      repository = msg.match[2]
       organizaton = "Terasology"
-      if (msg.match[4]?)
-        organizaton = msg.match[4]
+      if (msg.match[1]?)
+        organizaton = msg.match[1]
     repositoryFullName = "#{organizaton}/#{repository}"
     robot.logger.info "Querying https://api.github.com/repos/#{repositoryFullName}/issues/#{issueNo}"
     robot.http("https://api.github.com/repos/#{repositoryFullName}/issues/#{issueNo}")
