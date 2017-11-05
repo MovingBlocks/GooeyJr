@@ -6,6 +6,12 @@
 #   mjuvekar7 (https://github.com/mjuvekar7)
 
 module.exports = (robot) ->
+  robot.respond /hello/i, (msg) ->
+    msg.reply("Hello to you too!")
+
+  robot.respond /what is the meaning of life.*?/i, (msg) ->
+    msg.reply("42, of course!")
+
   robot.respond /(thanks|thx|thank you)/i, (msg) ->
     msg.reply("you're welcome!")
 
