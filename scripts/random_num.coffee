@@ -19,14 +19,14 @@ module.exports = (robot) ->
             lower = parseInt(msg.match[1])
             upper = parseInt(msg.match[2])
         rand = Math.floor(Math.random() * (upper - lower + 1) + lower)
-        res.reply("Rolled #{rand}!")
+        msg.reply("Rolled #{rand}!")
 
-    robot.respond /random (\d+)\s(\d+)/i, (res) ->
-        if parseInt(res.match[1]) > parseInt(res.match[2])
-            lower = parseInt(res.match[2])
-            upper = parseInt(res.match[1])
+    robot.respond /random (\d+)\s(\d+)/i, (msg) ->
+        if parseInt(msg.match[1]) > parseInt(msg.match[2])
+            lower = parseInt(msg.match[2])
+            upper = parseInt(msg.match[1])
         else
-            lower = parseInt(res.match[1])
-            upper = parseInt(res.match[2])
+            lower = parseInt(msg.match[1])
+            upper = parseInt(msg.match[2])
         rand = Math.floor(Math.random() * (upper - lower + 1) + lower)
         msg.reply("Rolled #{rand}!")

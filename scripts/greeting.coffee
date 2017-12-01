@@ -1,17 +1,17 @@
 # Description:
-#   Sends a greeting everytime a user enters the channel unless they opt out 
+#   Sends a greeting everytime a user enters the channel unless they opt out
 #
 # Notes:
 #   Ignores usernames starting with 'Guest' followed by digits
-#   Users can opt out by replying the bot 'Understood' 
+#   Users can opt out by replying the bot 'Understood'
 #   Users can opt in again by messaging the bot "Reset Greeting"
-#  
+#
 # Author:
 #   iojw (http://github.com/iojw)
 
 module.exports = (robot) ->
   # for testing, list of users that the bot will send the greeting to
-  reply_to = ["iojw", "rzats", "Cervator", "Guest1234"]
+  reply_to = ["mandarj", "iojw", "rzats", "Cervator", "Guest1234"]
   # list of users who have opted out of receiving the message
   opt_out = JSON.parse(robot.brain.get 'greeting') or []
   # IRC nickname of the bot
@@ -20,7 +20,7 @@ module.exports = (robot) ->
   guest_nick = /^Guest\d*$/
   # greeting message sent to users
   greeting_msg = "Hello! Welcome to #terasology!\n" +
-             "Do take note that this IRC channel is being logged.\n" + 
+             "Do take note that this IRC channel is being logged.\n" +
              "While we will try our best to respond to your messages as soon as possible, please be patient " +
              "and understand that not every online user will be watching the chat all the time.\n" +
              "If you would like to learn more about Terasology, be sure to check out our forums at http://forum.terasology.org " +
