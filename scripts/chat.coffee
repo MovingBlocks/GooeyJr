@@ -33,3 +33,8 @@ module.exports = (robot) ->
 
   robot.respond /hargle bargle(!)*$/i, (msg) ->
     msg.reply("HARGLE BARGLE!!")
+
+  robot.respond /hello$|hi$|sup$|what's up$/i, (msg) ->
+    replies = ["Hello!", "Greetings!", "What's up!"]
+    index = Math.floor(Math.random() * replies.length)
+    msg.reply(replies[index])
