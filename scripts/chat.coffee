@@ -6,6 +6,9 @@
 #   mjuvekar7 (https://github.com/mjuvekar7)
 
 module.exports = (robot) ->
+  robot.respond /hello/i, (msg) ->
+    msg.reply("Gooey Jr, at your service!")
+
   robot.respond /(thanks|thx|thank you)/i, (msg) ->
     msg.reply("you're welcome!")
 
