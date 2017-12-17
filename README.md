@@ -6,10 +6,8 @@ See the [Hubot Readme](https://github.com/github/hubot/blob/master/README.md) fo
 
 ## Environment setup  
 
-* Before beginning, ensure that you have both Ruby (https://www.ruby-lang.org/en/downloads/) and RubyGems (https://rubygems.org/pages/download) installed
-* Install `node.js` - https://docs.npmjs.com/getting-started/installing-node
+* Install heroku CLI using the instructions here - https://devcenter.heroku.com/articles/heroku-cli
 * Create an account on Heroku - https://www.heroku.com
-* Install the Heroku bindings: `gem install heroku`
 * Finally clone the project by entering `git clone https://github.com/MovingBlocks/GooeyJr` in your terminal
 * Alright, now that you have installed all of this, the fun part gets to happen
 
@@ -28,7 +26,7 @@ Once you've done this, you can now configure the bot by first giving it a nickna
 * Type: `heroku config:add HUBOT_IRC_NICK="GooeyJr"`, replacing "GooeyJr" with the nickname you would like the bot to have
   * You probably want to pick a name variant, such as adding your nick to the end of the bot name so that users can see whose bot it is. Take note that there is a limit of 16 characters.
 * Configure the IRC channel it connects to by entering: `heroku config:add HUBOT_IRC_ROOMS="#terasology"` 
-* Lastly, enter `heroku config:add HUBOT_IRC_SERVER="irc.freenode.net"` so the bot connects to the Freenode server
+* Lastly, enter `heroku config:add HUBOT_IRC_SERVER="irc.esper.net"` so the bot connects to the Freenode server
 
 It should automatically start after you have entered the above commands (there might be a slight delay), but if not try: `heroku ps:scale web=1`.
  
@@ -37,3 +35,13 @@ To turn off the bot type `heroku ps:scale web=0`. You can also restart the bot b
 If you face any errors, make sure to check the logs by typing `heroku logs`. 
 
 Have fun!
+
+# Additional configuration for irc.freenode.net 
+
+If you are testing out GooeyJr, there is *no need* to set this up. Espernet will work fine for testing purposes.
+
+Unlike, Espernet, Freenode requires SASL authentication for any user connecting from  AWS (which Heroku uses). Therefore, we need to set the following environment variables to allow our bot to connect to Freenode from Heroku. You will need to register an account on Freenode using your email before setting this up.
+
+`heroku config:add HUBOT_IRC_USESASL="true"`
+`heroku config:add HUBOT_IRC_USER="YOUR_USERNAME"`
+`heroku config:add HUBOT_IRC_PASSWORD="YOUR_PASSWORD"`
