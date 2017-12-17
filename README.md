@@ -36,12 +36,12 @@ If you face any errors, make sure to check the logs by typing `heroku logs`.
 
 Have fun!
 
-# Additional configuration for irc.freenode.net 
+### Additional configuration for irc.freenode.net 
 
 If you are testing out GooeyJr, there is *no need* to set this up. Espernet will work fine for testing purposes.
 
 Unlike, Espernet, Freenode requires SASL authentication for any user connecting from  AWS (which Heroku uses). Therefore, we need to set the following environment variables to allow our bot to connect to Freenode from Heroku. You will need to register an account on Freenode using your email before setting this up.
 
-`heroku config:add HUBOT_IRC_USESASL="true"`
-`heroku config:add HUBOT_IRC_USER="YOUR_USERNAME"`
-`heroku config:add HUBOT_IRC_PASSWORD="YOUR_PASSWORD"`
+`heroku config:add HUBOT_IRC_USESASL="true"`  
+`heroku config:add HUBOT_IRC_USER="YOUR_USERNAME"`  
+`heroku config:add HUBOT_IRC_PASSWORD="YOUR_PASSWORD"`  
