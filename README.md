@@ -9,7 +9,7 @@ See the [Hubot Readme](https://github.com/github/hubot/blob/master/README.md) fo
 * Install heroku CLI using the instructions here - https://devcenter.heroku.com/articles/heroku-cli
 * Create an account on Heroku - https://www.heroku.com
 * Finally clone the project by entering `git clone https://github.com/MovingBlocks/GooeyJr` in your terminal
-* Alright, now that you have installed all of this, the fun part gets to happen
+* Alright, now that you have installed all of this, the fun part begins
 
 ## Configure and run the bot
 
@@ -40,8 +40,8 @@ Have fun!
 
 If you are testing out GooeyJr, there is *no need* to set this up. Espernet will work fine for testing purposes.
 
-Unlike, Espernet, Freenode requires SASL authentication for any user connecting from  AWS (which Heroku uses). Therefore, we need to set the following environment variables to allow our bot to connect to Freenode from Heroku. You will need to register an account on Freenode using your email before setting this up.
+Unlike Espernet, Freenode requires SASL authentication for any user connecting from  AWS (which Heroku uses). Therefore, we need to set the following environment variables to allow our bot to connect to Freenode from Heroku. You will need to register an account on Freenode using your email before setting this up.
 
 `heroku config:add HUBOT_IRC_USESASL="true"`  
-`heroku config:add HUBOT_IRC_USER="YOUR_USERNAME"`  
+`heroku config:add HUBOT_IRC_USERNAME="YOUR_USERNAME"`  
 `heroku config:add HUBOT_IRC_PASSWORD="YOUR_PASSWORD"`  
