@@ -10,8 +10,6 @@
 #   iojw (http://github.com/iojw)
 
 module.exports = (robot) ->
-  # for testing, list of users that the bot will send the greeting to
-  reply_to = ["iojw", "rzats", "Cervator", "Guest1234"]
   # list of users who have opted out of receiving the message
   opt_out = JSON.parse(robot.brain.get 'greeting') or []
   # IRC nickname of the bot
@@ -55,7 +53,7 @@ module.exports = (robot) ->
 
   robot.enter (msg) ->
     username =  msg.message.user.name
-    if username not in opt_out and username isnt bot_nick and username in reply_to
+    if username not in opt_out and username isnt bot_nick
       msg.sendPrivate greeting_msg
       if not guest_nick.test(username)
         msg.sendPrivate understood_msg
