@@ -4,16 +4,9 @@
 # Commands:
 #   hubot issues count <user_name>@<repo_name> - get the amount of issues in a GitHub repo.
 #   hubot issues give <user_name>@<repo_name> - get a random issue from a GitHub repo.
-#
-#   issue#<user_name>/<repo_name>/<issue_number> 
-#     - displays link, title and state of issue
-#     - omitting user_name defaults to Terasology as user
-#     - omitting both user_name and repo_name defaults to MovingBlocks/Terasology repo
-#     
-#     - e.g. "Issue #1" is MovingBlocks/Terasology's #1 issue
-#            "Issue #Cooking/1" is Terasology/Cooking's #1 issue (as I think we talk more about modules, which are under the Terasology user)
-#            "Issue #MovingBlocks/GooeyJr/1" is MovingBlocks/GooeyJr's #1 issue (if we need to get an issue from a specific repo)
-#     - Also, you can shorten Issue to Iss. 
+#   #<user_name>/<repo_name>/<number> - retrieves issue or PR #<number> from <user_name>/<repo_name>.
+#   #<repo_name>/<number> - retrieves issue or PR #<number> from Terasology/<repo_name>.
+#   #<number> - retrieves issue or PR #<number> from MovingBlocks/Terasolog.
 # Author:
 #   gkaretka (https://github.com/gkaretka)
 #   andriii25 (https://github.com/andriii25)
@@ -50,7 +43,7 @@ module.exports = (robot) ->
           if counter is issue_index
             msg.reply "What about #{obj.title}? Take a look at it here: #{obj.html_url} !"
 
-  robot.hear /Iss(?:ue)?(?: )?#(?:(?:(\w+)\/)?(\w+)\/)?(\d+)/i, (msg) ->
+  robot.hear /#(?:(?:(\w+)\/)?(\w+)\/)?(\d+)/i, (msg) ->
     issueNo = msg.match[3]
     repositoryFullName = ""
     organizaton = "MovingBlocks"
@@ -70,7 +63,7 @@ module.exports = (robot) ->
           return
         issue = JSON.parse body
         if issue.title? && issue.number? && issue.state? && issue.html_url?
-          msg.send "Issue #{issue.number} @#{repositoryFullName} - #{issue.title} - #{issue.state} - #{issue.html_url}"
+          msg.send "\##{issue.number} @#{repositoryFullName} - #{issue.title} - #{issue.state} - #{issue.html_url}"
         else
           robot.logger.error "Repo #{repositoryFullName} not found, or undefined"
 
