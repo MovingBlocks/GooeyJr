@@ -9,7 +9,7 @@
 #   HUBOT_TELL_ABSOLUTE_TIME [boolean] - Set to use absolute time strings
 #
 # Commands:
-#   hubot tell <recipients> <some message> - tell <recipients> <some message> next time they are present.
+#   hubot tell <recipients> <some message> - Tell <recipients> <some message> next time they are present
 #
 # Notes:
 #   Case-insensitive prefix matching is employed when matching usernames, so

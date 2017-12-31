@@ -1,8 +1,8 @@
 #   A totally fair and unbiased random number generator.
 #
 # Commands:
-#   hubot random - respond with a random number between 0 and 1.
-#   hubot random between <lower> and <upper> - respond with a random number between lower and upper.
+#   hubot random - Returns a random number between 0 and 1
+#   hubot random between <lower> and <upper> - Returns a random number between <lower> and <upper>
 #
 # Author:
 #   mjuvekar7 (https://github.com/mjuvekar7)

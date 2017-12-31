@@ -2,11 +2,11 @@
 #   Commands related to issues in (public) GitHub repos.
 #
 # Commands:
-#   hubot issues count <username>/<repo_name> - Returns the number of issues in <username>/<repo_name>.
-#   hubot issues give <username>/<repo_name> - Retrieves a random issue from a <username>/<repo_name>.
-#   #<username>/<repo_name>/<number> - Retrieves issue or PR #<number> from <username>/<repo_name>.
-#   #<repo_name>/<number> - Retrieves issue or PR #<number> from Terasology/<repo_name>.
-#   #<number> - Retrieves issue or PR #<number> from MovingBlocks/Terasology.
+#   hubot issues count <username>/<repo_name> - Returns the number of issues in <username>/<repo_name>
+#   hubot issues give <username>/<repo_name> - Retrieves a random issue from a <username>/<repo_name>
+#   #<username>/<repo_name>/<number> - Retrieves issue or PR #<number> from <username>/<repo_name>
+#   #<repo_name>/<number> - Retrieves issue or PR #<number> from Terasology/<repo_name>
+#   #<number> - Retrieves issue or PR #<number> from MovingBlocks/Terasology
 # Author:
 #   gkaretka (https://github.com/gkaretka)
 #   andriii25 (https://github.com/andriii25)
