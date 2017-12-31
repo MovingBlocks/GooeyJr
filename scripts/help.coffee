@@ -16,8 +16,8 @@ module.exports = (robot) ->
 
   robot.router.get '/help', (req, res) ->
     res.render 'help',
-      title: "help",
+      title: "Help",
       commands: robot.helpCommands()
 
   robot.respond /help\s*(.*)?$/i, (msg) ->
-    msg.send "Help can be found at the following link: https://gooeyjr.herokuapp.com/help"
+    msg.send "A list of commands can be found at https://gooeyjr.herokuapp.com/help"
