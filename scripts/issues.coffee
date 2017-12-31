@@ -2,11 +2,11 @@
 #   Commands related to issues in (public) GitHub repos.
 #
 # Commands:
-#   hubot issues count <user_name>@<repo_name> - get the amount of issues in a GitHub repo.
-#   hubot issues give <user_name>@<repo_name> - get a random issue from a GitHub repo.
-#   #<user_name>/<repo_name>/<number> - retrieves issue or PR #<number> from <user_name>/<repo_name>.
-#   #<repo_name>/<number> - retrieves issue or PR #<number> from Terasology/<repo_name>.
-#   #<number> - retrieves issue or PR #<number> from MovingBlocks/Terasolog.
+#   hubot issues count <username>/<repo_name> - Returns the number of issues in <username>/<repo_name>.
+#   hubot issues give <username>/<repo_name> - Retrieves a random issue from a <username>/<repo_name>.
+#   #<username>/<repo_name>/<number> - Retrieves issue or PR #<number> from <username>/<repo_name>.
+#   #<repo_name>/<number> - Retrieves issue or PR #<number> from Terasology/<repo_name>.
+#   #<number> - Retrieves issue or PR #<number> from MovingBlocks/Terasology.
 # Author:
 #   gkaretka (https://github.com/gkaretka)
 #   andriii25 (https://github.com/andriii25)
@@ -16,7 +16,7 @@ min = 0
 
 
 module.exports = (robot) ->
-  robot.respond /issues count (.*)@(.*)/i, (msg) ->
+  robot.respond /issues count (.*)\/(.*)/i, (msg) ->
     user = msg.match[1]
     repo = msg.match[2]
     msg.http("https://api.github.com/repos/#{user}/#{repo}")
@@ -29,7 +29,7 @@ module.exports = (robot) ->
           issue_translation = "#{issue_translation}s"
         msg.reply "There are #{issue_count} #{issue_translation}"
 
-  robot.respond /issues give (.*)@(.*)/i, (msg) ->
+  robot.respond /issues give (.*)\/(.*)/i, (msg) ->
     user = msg.match[1]
     repo = msg.match[2]
     msg.http("https://api.github.com/repos/#{user}/#{repo}/issues")
@@ -66,4 +66,3 @@ module.exports = (robot) ->
           msg.send "\##{issue.number} @#{repositoryFullName} - #{issue.title} - #{issue.state} - #{issue.html_url}"
         else
           robot.logger.error "Repo #{repositoryFullName} not found, or undefined"
-
