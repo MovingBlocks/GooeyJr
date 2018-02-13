@@ -9,23 +9,23 @@ module.exports = (robot) ->
   robot.respond /hello/i, (msg) ->
     msg.reply("Gooey Jr, at your service!")
 
-  robot.respond /(thanks|thx|thank you)/i, (msg) ->
-    msg.reply("you're welcome!")
+  robot.respond /thanks|thx|thank you/i, (msg) ->
+    msg.reply("You're welcome!")
 
-  robot.hear /.*any.*(people|one).*here.*?/i, (msg) ->
-    msg.reply("yep, I'm here - athough I'm just a bot :)")
+  robot.hear /.*any(body|one).here.?$/i, (msg) ->
+    msg.reply("Yup, I'm here - although I'm just a bot.")
 
-  robot.hear /.*Merry Christmas.*?/i, (msg) ->
+  robot.respond /.*Merry Christmas.*?/i, (msg) ->
     msg.reply("Merry Christmas to you, too!")
 
-  robot.respond /.*good.*morning.*/i, (msg) ->
+  robot.respond /.*good morning.*/i, (msg) ->
     msg.reply("Have a nice day!")
 
-  robot.respond /.*good.*afternoon.*/i, (msg) ->
+  robot.respond /.*good afternoon.*/i, (msg) ->
     sender = msg.message.user.name
     msg.send("You too, #{sender}!")
 
-  robot.respond /.*good.*night.*/i, (msg) ->
+  robot.respond /.*good night.*/i, (msg) ->
     msg.reply("💤")
 
   robot.respond /hargle(!)*$/i, (msg) ->
