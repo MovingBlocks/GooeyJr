@@ -10,8 +10,6 @@
 #   iojw (http://github.com/iojw)
 
 module.exports = (robot) ->
-  # list of users who have opted out of receiving the message
-  opt_out = JSON.parse(robot.brain.get 'greeting') or []
   # IRC nickname of the bot
   bot_nick = process.env.HUBOT_IRC_NICK
   # regexp for Guest nicknames
@@ -26,12 +24,13 @@ module.exports = (robot) ->
   understood_msg = "Reply 'Understood' if you do not want to receive this greeting again."
 
   robot.respond /understood.*/i, (msg) ->
+    opt_out = JSON.parse(robot.brain.get 'greeting') or []
     username = msg.message.user.name
     room = msg.message.user.room
     if not room?
       if username not in opt_out and not guest_nick.test(username)
         opt_out.push username
-        robot.brain.set('greeting', opt_out)
+        robot.brain.set('greeting', JSON.stringify(opt_out))
         robot.brain.save()
         msg.send "You will not receive this greeting anymore. Message 'Reset Greeting' to me in private if you would like to undo this."
       else if guest_nick.test(username)
@@ -40,18 +39,20 @@ module.exports = (robot) ->
         msg.send "You have already opted out of the greeting."
 
   robot.respond /reset greeting.*/i, (msg) ->
+    opt_out = JSON.parse(robot.brain.get 'greeting') or []
     username = msg.message.user.name
     room = msg.message.user.room
     if not room?
       if username in opt_out
         opt_out.splice(opt_out.indexOf(username), 1)
-        robot.brain.set('greeting', opt_out)
+        robot.brain.set('greeting', JSON.stringify(opt_out))
         robot.brain.save()
         msg.send "You will receive the greeting the next time you join the channel."
       else
         msg.send "You haven't opted out yet!"
 
   robot.enter (msg) ->
+    opt_out = JSON.parse(robot.brain.get 'greeting') or []
     username =  msg.message.user.name
     if username not in opt_out and username isnt bot_nick
       msg.sendPrivate greeting_msg
