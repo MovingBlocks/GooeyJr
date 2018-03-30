@@ -13,7 +13,7 @@ module.exports = (robot) ->
   # IRC nickname of the bot
   bot_nick = process.env.HUBOT_IRC_NICK
   # regexp for Guest nicknames
-  guest_nick = /^Guest\d*$/
+  guest_nick = /^(Guest|Terasologist)\d*$/i
   # greeting message sent to users
   greeting_msg = "Hello! Welcome to #terasology!\n" +
              "Do take note that this IRC channel is being logged.\n" + 
