@@ -16,11 +16,11 @@ module.exports = (robot) ->
   guest_nick = /^(Guest|Terasologist)\d*$/i
   # greeting message sent to users
   greeting_msg = "Hello! Welcome to #terasology!\n" +
-             "Do take note that this IRC channel is being logged.\n" + 
-             "While we will try our best to respond to your messages as soon as possible, please be patient " +
-             "and understand that not every online user will be watching the chat all the time.\n" +
-             "If you would like to learn more about Terasology, be sure to visit http://forum.terasology.org for our forums " +
-             "and http://github.com/MovingBlocks/Terasology for our Github repo!"
+                 "While we will try our best to respond to your messages as soon as possible, please be patient " +
+                 "and understand that not every online user will be watching the chat all the time.\n" +
+                 "Do check out https://github.com/MovingBlocks/Terasology/wiki/Using-IRC for more details about our IRC channel.\n" +
+                 "If you would like to learn more about Terasology, be sure to visit http://forum.terasology.org for our forums " +
+                 "and http://github.com/MovingBlocks/Terasology for our Github repo!\n"
   understood_msg = "Reply 'Understood' if you do not want to receive this greeting again."
 
   robot.respond /understood.*/i, (msg) ->
