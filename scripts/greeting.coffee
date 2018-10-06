@@ -13,14 +13,17 @@ module.exports = (robot) ->
   # IRC nickname of the bot
   bot_nick = process.env.HUBOT_IRC_NICK
   # regexp for Guest nicknames
-  guest_nick = /^Guest\d*$/
+  guest_nick = /^(Guest|Terasologist)\d*$/i
   # greeting message sent to users
   greeting_msg = "Hello! Welcome to #terasology!\n" +
-             "Do take note that this IRC channel is being logged.\n" + 
-             "While we will try our best to respond to your messages as soon as possible, please be patient " +
-             "and understand that not every online user will be watching the chat all the time.\n" +
-             "If you would like to learn more about Terasology, be sure to check out our forums at http://forum.terasology.org " +
-             "and our Github repo at http://github.com/MovingBlocks/Terasology!"
+                 "This channel is in Moderated mode, where only voiced members can talk. This is because of a large amount of spam affecting the channel.\n" +
+                 "!!If you are not a robot then PM any operator to get voice!!\n" +
+                 "Alternatively visit our discord at discord.gg/Terasology " +
+                 "We will try our best to respond to your messages as soon as possible, please be patient " +
+                 "and understand that not every online user will be watching the chat all the time.\n" +
+                 "Do check out https://github.com/MovingBlocks/Terasology/wiki/Using-IRC for more details about our IRC channel.\n" +
+                 "If you would like to learn more about Terasology, be sure to visit http://forum.terasology.org for our forums " +
+                 "and http://github.com/MovingBlocks/Terasology for our Github repo!\n"
   understood_msg = "Reply 'Understood' if you do not want to receive this greeting again."
 
   robot.respond /understood.*/i, (msg) ->
