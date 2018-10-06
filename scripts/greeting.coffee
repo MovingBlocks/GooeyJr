@@ -16,7 +16,10 @@ module.exports = (robot) ->
   guest_nick = /^(Guest|Terasologist)\d*$/i
   # greeting message sent to users
   greeting_msg = "Hello! Welcome to #terasology!\n" +
-                 "While we will try our best to respond to your messages as soon as possible, please be patient " +
+                 "This channel is in Moderated mode, where only voiced members can talk. This is because of a large amount of spam affecting the channel.\n" +
+                 "!!If you are not a robot then PM any operator to get voice!!\n" +
+                 "Alternatively visit our discord at discord.gg/Terasology " +
+                 "We will try our best to respond to your messages as soon as possible, please be patient " +
                  "and understand that not every online user will be watching the chat all the time.\n" +
                  "Do check out https://github.com/MovingBlocks/Terasology/wiki/Using-IRC for more details about our IRC channel.\n" +
                  "If you would like to learn more about Terasology, be sure to visit http://forum.terasology.org for our forums " +
