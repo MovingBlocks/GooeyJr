@@ -12,6 +12,8 @@
 module.exports = (robot) ->
   # IRC nickname of the bot
   bot_nick = process.env.HUBOT_IRC_NICK
+  bot_rooms = process.env.HUBOT_IRC_ROOMS
+  main_bot_room = (bot_rooms.split ",")[0]
   # regexp for Guest nicknames
   guest_nick = /^(Guest|Terasologist)\d*$/i
   # greeting message sent to users
@@ -24,7 +26,7 @@ module.exports = (robot) ->
                  "Do check out https://github.com/MovingBlocks/Terasology/wiki/Using-IRC for more details about our IRC channel.\n" +
                  "If you would like to learn more about Terasology, be sure to visit http://forum.terasology.org for our forums " +
                  "and http://github.com/MovingBlocks/Terasology for our Github repo!\n"
-  understood_msg = "Reply 'Understood' if you do not want to receive this greeting again."
+  understood_msg = "Reply 'Understood' to gain voice. You will not receive this greeting again."
 
   robot.respond /understood.*/i, (msg) ->
     opt_out = JSON.parse(robot.brain.get 'greeting') or []
@@ -35,7 +37,8 @@ module.exports = (robot) ->
         opt_out.push username
         robot.brain.set('greeting', JSON.stringify(opt_out))
         robot.brain.save()
-        msg.send "You will not receive this greeting anymore. Message 'Reset Greeting' to me in private if you would like to undo this."
+        robot.adapter.command('MODE', main_bot_room, '+v', username)
+        msg.send "You have been given voice and will not receive this greeting anymore. Message 'Reset Greeting' to me in private if you would like to undo this."
       else if guest_nick.test(username)
         msg.send "Guest accounts cannot opt out."
       else
