@@ -25,6 +25,7 @@ module.exports = (robot) ->
                  "If you would like to learn more about Terasology, be sure to visit http://forum.terasology.org for our forums " +
                  "and http://github.com/MovingBlocks/Terasology for our Github repo!\n"
   understood_msg = "Reply 'Understood' if you do not want to receive this greeting again."
+  notice_msg = "Psst. This channel is current moderated due to the spam. Check out the private message I've sent you for more information and how to gain voice."
 
   robot.respond /understood.*/i, (msg) ->
     opt_out = JSON.parse(robot.brain.get 'greeting') or []
@@ -58,6 +59,7 @@ module.exports = (robot) ->
     opt_out = JSON.parse(robot.brain.get 'greeting') or []
     username =  msg.message.user.name
     if username not in opt_out and username isnt bot_nick
+      robot.adapter.command('NOTICE', username, notice_msg)
       msg.sendPrivate greeting_msg
       if not guest_nick.test(username)
         msg.sendPrivate understood_msg
