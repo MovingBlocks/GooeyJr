@@ -19,7 +19,7 @@ So now:
 * Login to Heroku: `heroku login` - you should be prompted for your account info
 * Create a Heroku application: `heroku create [name]` replacing `[name]` with the app's name in all lower case letters, numbers, or dashes
 * Connect the remote Heroku application to your local Git repository: `heroku git:remote -a [name]` where again `[name]` matches what you named your app on Heroku
-* Push this to heroku by entering `git push heroku master`
+* Push this to heroku by entering `git push heroku develop:master`
 
 Once you've done this, you can now configure the bot by first giving it a nickname that will be displayed on IRC:
 
@@ -44,4 +44,6 @@ Unlike Espernet, Freenode requires SASL authentication for any user connecting f
 
 `heroku config:add HUBOT_IRC_USESASL="true"`  
 `heroku config:add HUBOT_IRC_USERNAME="YOUR_USERNAME"`  
-`heroku config:add HUBOT_IRC_PASSWORD="YOUR_PASSWORD"`  
+`heroku config:add HUBOT_IRC_PASSWORD="YOUR_PASSWORD"` 
+
+Note: Ensure that `HUBOT_IRC_NICK` is set to the same nickname used to register for your freenode account i.e. `HUBOT_IRC_NICK` should be the same as `HUBOT_IRC_USERNAME`.
