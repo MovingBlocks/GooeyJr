@@ -47,3 +47,5 @@ Unlike Espernet, Freenode requires SASL authentication for any user connecting f
 `heroku config:add HUBOT_IRC_PASSWORD="YOUR_PASSWORD"` 
 
 Note: Ensure that `HUBOT_IRC_NICK` is set to the same nickname used to register for your freenode account i.e. `HUBOT_IRC_NICK` should be the same as `HUBOT_IRC_USERNAME`.
+
+You will also need to change the server to Freenode. To do this, enter `heroku config:add HUBOT_IRC_SERVER="irc.freenode.net"`. The channel will be #terasology, the same as with Espernet.
