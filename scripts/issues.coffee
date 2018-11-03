@@ -7,9 +7,11 @@
 #   #<username>/<repo_name>/<number> - Retrieves issue or PR #<number> from <username>/<repo_name>
 #   #<repo_name>/<number> - Retrieves issue or PR #<number> from Terasology/<repo_name>
 #   #<number> - Retrieves issue or PR #<number> from MovingBlocks/Terasology
+#   <URL> - Retrieves issue at <URL>.
 # Author:
 #   gkaretka (https://github.com/gkaretka)
 #   andriii25 (https://github.com/andriii25)
+#   IMACULGY (https://github.com/IMACULGY)
 
 max = 30
 min = 0
@@ -43,19 +45,24 @@ module.exports = (robot) ->
           if counter is issue_index
             msg.reply "What about #{obj.title}? Take a look at it here: #{obj.html_url} !"
 
-  robot.hear /#(?:(?:(\w+)\/)?(\w+)\/)?(\d+)/i, (msg) ->
-    issueNo = msg.match[3]
-    repositoryFullName = ""
-    organizaton = "MovingBlocks"
-    repository = "Terasology"
-    if (msg.match[2]?)
-      repository = msg.match[2]
-      organizaton = "Terasology"
-      if (msg.match[1]?)
-        organizaton = msg.match[1]
-    repositoryFullName = "#{organizaton}/#{repository}"
-    robot.logger.info "Querying https://api.github.com/repos/#{repositoryFullName}/issues/#{issueNo}"
-    robot.http("https://api.github.com/repos/#{repositoryFullName}/issues/#{issueNo}")
+  robot.hear /#(?:(?:(\w+)\/)?(\w+)\/)?(\d+)/gi, (msg) ->
+    num = 0
+    while msg.match[num]?
+      word = msg.match[num]
+      pattern = /#(?:(?:(\w+)\/)?(\w+)\/)?(\d+)/i
+      issueNo = word.match(pattern)[3]
+      repositoryFullName = ""
+      organizaton = "MovingBlocks"
+      repository = "Terasology"
+      if (word.match(pattern)[2]?)
+        repository = word.match(pattern)[2]
+        organizaton = "Terasology"
+        if (word.match(pattern)[1]?)
+          organizaton = word.match(pattern)[1]
+      repositoryFullName = "#{organizaton}/#{repository}"
+      num = num + 1
+      robot.logger.info "Querying https://api.github.com/repos/#{repositoryFullName}/issues/#{issueNo}"
+      robot.http("https://api.github.com/repos/#{repositoryFullName}/issues/#{issueNo}")
       .header('Content-Type', 'application/json')
       .get() (err, res, body) ->
         if err
@@ -64,5 +71,29 @@ module.exports = (robot) ->
         issue = JSON.parse body
         if issue.title? && issue.number? && issue.state? && issue.html_url?
           msg.send "\##{issue.number} @#{repositoryFullName} - #{issue.title} - #{issue.state} - #{issue.html_url}"
+        else
+          robot.logger.error "Repo #{repositoryFullName} not found, or undefined"
+
+  robot.hear /https:\/\/github\.com\/(\w+)\/(\w+)\/issues\/(\d+)/gi, (msg) ->
+    num = 0
+    while msg.match[num]?
+      word = msg.match[num]
+      pattern = /https:\/\/github\.com\/(\w+)\/(\w+)\/issues\/(\d+)/i
+      issueNo = word.match(pattern)[3]
+      repositoryFullName = ""
+      organizaton = word.match(pattern)[1]
+      repository = word.match(pattern)[2]
+      repositoryFullName = "#{organizaton}/#{repository}"
+      num = num+1
+      robot.logger.info "Querying https://api.github.com/repos/#{repositoryFullName}/issues/#{issueNo}"
+      robot.http("https://api.github.com/repos/#{repositoryFullName}/issues/#{issueNo}")
+      .header('Content-Type', 'application/json')
+      .get() (err, res, body) ->
+        if err
+          robot.logger.error "Sorry! #{err} when getting issue #{issueNo} at #{repositoryFullName}"
+          return
+        issue = JSON.parse body
+        if issue.title? && issue.number? && issue.state? && issue.body?
+          msg.send "\##{issue.number} @#{repositoryFullName} - #{issue.title} - #{issue.state} - #{issue.body}"
         else
           robot.logger.error "Repo #{repositoryFullName} not found, or undefined"
