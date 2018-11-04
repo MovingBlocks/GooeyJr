@@ -7,7 +7,7 @@
 #   #<username>/<repo_name>/<number> - Retrieves issue or PR #<number> from <username>/<repo_name>
 #   #<repo_name>/<number> - Retrieves issue or PR #<number> from Terasology/<repo_name>
 #   #<number> - Retrieves issue or PR #<number> from MovingBlocks/Terasology
-#   <URL> - Retrieves issue at <URL>.
+#   <URL> - Retrieves issue or PR at <URL>.
 # Author:
 #   gkaretka (https://github.com/gkaretka)
 #   andriii25 (https://github.com/andriii25)
@@ -48,17 +48,17 @@ module.exports = (robot) ->
   robot.hear /#(?:(?:(\w+)\/)?(\w+)\/)?(\d+)/gi, (msg) ->
     num = 0
     while msg.match[num]?
-      word = msg.match[num]
+      issueID = msg.match[num]
       pattern = /#(?:(?:(\w+)\/)?(\w+)\/)?(\d+)/i
-      issueNo = word.match(pattern)[3]
+      issueNo = issueID.match(pattern)[3]
       repositoryFullName = ""
       organizaton = "MovingBlocks"
       repository = "Terasology"
-      if (word.match(pattern)[2]?)
-        repository = word.match(pattern)[2]
+      if (issueID.match(pattern)[2]?)
+        repository = issueID.match(pattern)[2]
         organizaton = "Terasology"
-        if (word.match(pattern)[1]?)
-          organizaton = word.match(pattern)[1]
+        if (issueID.match(pattern)[1]?)
+          organizaton = issueID.match(pattern)[1]
       repositoryFullName = "#{organizaton}/#{repository}"
       num = num + 1
       robot.logger.info "Querying https://api.github.com/repos/#{repositoryFullName}/issues/#{issueNo}"
@@ -74,15 +74,15 @@ module.exports = (robot) ->
         else
           robot.logger.error "Repo #{repositoryFullName} not found, or undefined"
 
-  robot.hear /https:\/\/github\.com\/(\w+)\/(\w+)\/issues\/(\d+)/gi, (msg) ->
+  robot.hear /https:\/\/github\.com\/(\w+)\/(\w+)\/(?:issues|pull)\/(\d+)/gi, (msg) ->
     num = 0
     while msg.match[num]?
-      word = msg.match[num]
-      pattern = /https:\/\/github\.com\/(\w+)\/(\w+)\/issues\/(\d+)/i
-      issueNo = word.match(pattern)[3]
+      url = msg.match[num]
+      pattern = /https:\/\/github\.com\/(\w+)\/(\w+)\/(?:issues|pull)\/(\d+)/i
+      issueNo = url.match(pattern)[3]
       repositoryFullName = ""
-      organizaton = word.match(pattern)[1]
-      repository = word.match(pattern)[2]
+      organizaton = url.match(pattern)[1]
+      repository = url.match(pattern)[2]
       repositoryFullName = "#{organizaton}/#{repository}"
       num = num+1
       robot.logger.info "Querying https://api.github.com/repos/#{repositoryFullName}/issues/#{issueNo}"
@@ -93,7 +93,7 @@ module.exports = (robot) ->
           robot.logger.error "Sorry! #{err} when getting issue #{issueNo} at #{repositoryFullName}"
           return
         issue = JSON.parse body
-        if issue.title? && issue.number? && issue.state? && issue.body?
-          msg.send "\##{issue.number} @#{repositoryFullName} - #{issue.title} - #{issue.state} - #{issue.body}"
+        if issue.title? && issue.number? && issue.state? && issue.html_url?
+          msg.send "\##{issue.number} @#{repositoryFullName} - #{issue.title} - #{issue.state} - #{issue.html_url}"
         else
           robot.logger.error "Repo #{repositoryFullName} not found, or undefined"
