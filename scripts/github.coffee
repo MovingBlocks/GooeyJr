@@ -32,6 +32,9 @@ module.exports = (robot) ->
     github.post "orgs/#{org}/repos", data, (repo) ->
       msg.send "Repo #{repo.name} created at #{repo.html_url}"
 
+    github.handleErrors (response) ->
+      msg.send "Error #{response.statusCode}! Please check that you have sufficient permissions to complete the action."
+
   robot.respond /add (\w+) to team (\w+) in (\w+)/i, (msg) ->
     unless robot.auth.hasRole msg.envelope.user, 'github'
       msg.send "Sorry #{msg.message.user.name}, you don't have the right role to request that."
@@ -57,3 +60,6 @@ module.exports = (robot) ->
         username = user.login
         github.request 'PUT', "teams/#{ourTeam.id}/members/#{username}", {}, (res) ->
           msg.send "#{username} has been added to the team #{ourTeam.name} in #{org}."
+
+    github.handleErrors (response) ->
+      msg.send "Error #{response.statusCode}! Please check that you have sufficient permissions to complete the action."
