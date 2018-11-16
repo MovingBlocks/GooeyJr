@@ -11,11 +11,13 @@ See the [Hubot Readme](https://github.com/github/hubot/blob/master/README.md) fo
 * Finally clone the project by entering `git clone https://github.com/MovingBlocks/GooeyJr` in your terminal
 * Alright, now that you have installed all of this, the fun part begins
 
-## Configure and run the bot
+## Running the bot on IRC
 
 So now: 
 
 * Navigate to the GooeyJr repository that you have just cloned
+* Run `git checkout irc-bot` to switch to the branch for running the bot on IRC
+* Move the scripts that you want to use or test from the `scripts-archive` folder to the `scripts` folder.
 * Login to Heroku: `heroku login` - you should be prompted for your account info
 * Create a Heroku application: `heroku create [name]` replacing `[name]` with the app's name in all lower case letters, numbers, or dashes
 * Connect the remote Heroku application to your local Git repository: `heroku git:remote -a [name]` where again `[name]` matches what you named your app on Heroku
@@ -49,3 +51,8 @@ Unlike Espernet, Freenode requires SASL authentication for any user connecting f
 Note: Ensure that `HUBOT_IRC_NICK` is set to the same nickname used to register for your freenode account i.e. `HUBOT_IRC_NICK` should be the same as `HUBOT_IRC_USERNAME`.
 
 You will also need to change the server to Freenode. To do this, enter `heroku config:add HUBOT_IRC_SERVER="irc.freenode.net"`. The channel will be #terasology, the same as with Espernet.
+
+## Running the bot on Slack
+Deploying GooeyJr on Slack in similar to deploying it on IRC, except you'll be using the `develop` branch instead. 
+
+You only need to add the `HUBOT_SLACK_TOKEN` configuration to allow the bot to connect to your Slack workspace.
