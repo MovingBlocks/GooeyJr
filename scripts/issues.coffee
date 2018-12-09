@@ -94,6 +94,6 @@ module.exports = (robot) ->
           return
         issue = JSON.parse body
         if issue.title? && issue.number? && issue.state? && issue.html_url?
-          msg.send "\##{issue.number} @#{repositoryFullName} - #{issue.title} - #{issue.state} - #{issue.html_url}"
+          msg.send "\##{issue.number} @#{repositoryFullName} - #{issue.title} - #{issue.state} - <#{issue.html_url}>"
         else
           robot.logger.error "Repo #{repositoryFullName} not found, or undefined"
