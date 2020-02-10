@@ -38,7 +38,7 @@ module.exports = (robot) ->
         robot.brain.save()
         robot.adapter.command('MODE', main_bot_room, '+v', username)
         robot.adapter.command('PRIVMSG', "ChanServ", ":FLAGS", main_bot_room, username, '+v')
-        msg.send "You have been given voice and will not receive this greeting anymore. Message 'Reset Greeting' to me in private if you would like to undo this."
+        msg.send "You will not receive this greeting anymore. Message 'Reset Greeting' to me in private if you would like to undo this."
       else if guest_nick.test(username)
         msg.send "Guest accounts cannot opt out."
       else
